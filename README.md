@@ -1,3 +1,3 @@
-# CH6-Hero-Born-AA
+# Hero-Born-AA
 
 Only through CH6
