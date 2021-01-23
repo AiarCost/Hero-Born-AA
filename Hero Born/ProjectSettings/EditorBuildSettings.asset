@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/CH6 Bookstuff.unity
+    guid: f3347c48338eeb34e96e1de709e8c959
   m_configObjects: {}
