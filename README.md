@@ -1,3 +1,3 @@
 # Hero-Born-AA
 
-Only through CH6
+Link: https://aiarcost.github.io/Hero-Born-AA/
