@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CH6 Bookstuff.unity
-    guid: f3347c48338eeb34e96e1de709e8c959
+    path: Assets/Scenes/CH7 BookStuff.unity
+    guid: ef712a94d76b4aa4d840b0ddc879142a
   m_configObjects: {}
