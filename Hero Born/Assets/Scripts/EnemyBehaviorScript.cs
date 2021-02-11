@@ -1,16 +1,70 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyBehaviorScript : MonoBehaviour
 {
+    public Transform player;
+    public Transform patrolRoute;
+    public List<Transform> locations;
 
+    private int locationIndex = 0;
+    private NavMeshAgent agent;
+
+    private int _lives = 3;
+    public int EnemyLives
+    {
+        get { return _lives; }
+
+        private set
+        {
+            _lives = value;
+            if (_lives <= 0)
+            {
+                Debug.Log("Enemy Down");
+                Destroy(gameObject);
+            }
+        }
+    }
+    private void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        player = GameObject.Find("Player").transform;
+        InitalizePatrolRoute();
+
+        MoveToNextPatrolLocation();
+    }
+
+    private void Update()
+    {
+        if (agent.remainingDistance < .2f && !agent.pathPending)
+            MoveToNextPatrolLocation();
+    }
+    void InitalizePatrolRoute()
+    {
+        foreach (Transform child in patrolRoute)
+        {
+            locations.Add(child);
+        }
+    }
+
+    void MoveToNextPatrolLocation()
+    {
+        if (locations.Count == 0)
+            return;
+
+        agent.destination = locations[locationIndex].position;
+        locationIndex = (locationIndex + 1) % locations.Count;
+    }
     void OnTriggerEnter(Collider col)
     {
 
         if (col.name == "Player")
+        {
+            agent.destination = player.position;
             Debug.Log("Player Detected - attack!");
-        
+        }
     }
 
     void OnTriggerExit(Collider col)
@@ -20,4 +74,12 @@ public class EnemyBehaviorScript : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "Bullet(Clone)")
+        {
+            EnemyLives -= 1;
+            Debug.Log("Critical Hit!");
+        }
+    }
 }

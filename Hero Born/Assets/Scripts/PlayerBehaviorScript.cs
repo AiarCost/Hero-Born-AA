@@ -20,10 +20,13 @@ public class PlayerBehaviorScript : MonoBehaviour
     private CapsuleCollider col;
     private Rigidbody _rb;
 
+    private GameBehavior _gameManager;
+
     void Start ()
     {
         _rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameBehavior>();
     }
  
     // Update is called once per frame
@@ -71,4 +74,11 @@ public class PlayerBehaviorScript : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.name == "Enemy")
+        {
+            _gameManager.HP -= 1;
+        }
+    }
 }
