@@ -1096,6 +1096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showWinScreen: 0
+  showLoseScreen: 0
   labelText: Collect all 4 items and win your freedom!
   maxItems: 1
 --- !u!4 &1187602008
@@ -2137,6 +2138,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 50674043996673676, guid: 8953bc1764829b540a64faaeefdac6f5,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 50674043996673676, guid: 8953bc1764829b540a64faaeefdac6f5,
         type: 3}
       propertyPath: m_Constraints
