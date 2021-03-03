@@ -21,6 +21,7 @@ public class ItemBehaviorScript : MonoBehaviour
             Debug.Log("Item Collected");
 
             gameManager.Items += 1;
+            gameManager.PrintLootReport();
         }
 
     }
